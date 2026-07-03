@@ -3,8 +3,8 @@
  * Example_F16.py
  * Created on: 31 May 2026
  * Improved for: 31 May 2026
- * Author: Guy Soffer
- * Copyright (C) 2026 Guy Soffer
+ * Author: Tzur Soffer
+ * Copyright (C) 2026 Tzur Soffer
 """
 import pygame, math
 from MathLib import MathLib
@@ -52,14 +52,11 @@ def quadMix(p, r):
     return MathLib.MxV(M, [p, r])
 
 def computePropellers(maxRps, p, r, yaw):
-    # Step 1: rotate pitch/roll
     p2, r2 = rotatePR(p, r, yaw)
 
-    # Step 2: quadcopter mixing (raw)
     props = quadMix(p2, r2)  # mix WITHOUT maxRps first
 
-    # Step 3: normalize to maxRps
-    # Find largest absolute value
+    # Normalize
     maxVal = 0
     for v in props:
         if abs(v) > maxVal:
@@ -69,10 +66,9 @@ def computePropellers(maxRps, p, r, yaw):
     if maxVal > 1.0:
         props = MathLib.scaleV(props, 1.0 / maxVal)
 
-    # Step 4: apply maxRps
+    # Apply maxRps
     props = MathLib.scaleV(props, maxRps)
 
-    # Step 5: clip each motor
     A = MathLib.clip(props[0], -maxRps, maxRps)
     B = MathLib.clip(props[1], -maxRps, maxRps)
     C = MathLib.clip(props[2], -maxRps, maxRps)
@@ -116,7 +112,6 @@ if __name__ == "__main__":
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
               run = False
-        ### Wait for next step time
         world.reset()
         clearScreen(screen)
 
@@ -145,15 +140,11 @@ if __name__ == "__main__":
         drone.setPropellors(A, B, C, D)
         drone.rotate(-camAngX_r,-camAngY_r,-camAngZ_r, centerAt=(100, 100, -100))
         drone.tick(dt)
-
-
-        ### Draw 3D world
         wireframe.draw(world)
-        
+
         t += dt
         clock.tick(30)
-        
-        ### Display output
+
         pygame.display.flip()
 
     pygame.quit()

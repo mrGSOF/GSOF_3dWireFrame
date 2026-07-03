@@ -3,20 +3,17 @@
  * F16_Class.py
  * Created on: 6 Jan 2025
  * Improved for: 25 May 2026
- * Author: Guy Soffer
- * Copyright (C) 2026 Guy Soffer
+ * Author: Tzur Soffer
+ * Copyright (C) 2026 Tzur Soffer
 """
 
 import copy
-from math import pi
 try:
    from GSOF_3dWireFrame.Lib3D.Object_WireFrame import Object_wireFrame as Object
    from GSOF_3dWireFrame.Lib3D.Assembly import Assembly
    from GSOF_3dWireFrame.Lib3D.Utils import Colors
 except:
    print("GSOF_Wireframe3D module isn't installed")
-
-degToRad = pi/180
 
 class View(Assembly):
     """Constructs the gauges screen"""
