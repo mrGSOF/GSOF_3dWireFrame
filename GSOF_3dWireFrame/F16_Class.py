@@ -73,7 +73,7 @@ class F16_View(Assembly):
             filename="%s/objects/f16.stl"%folder, color=BLUE, name="F16")\
             .setCenter(scale=1.0, method="arithCenter")
         
-        self.plume = objects=Object(
+        self.plume = Object(
            filename="%s/objects/Plume.json"%folder, color=RED)\
            .setCenter(scale=30, rotate=(180*degToRad, 0, 0))
         plume = Assembly(objects=(self.plume,))   
