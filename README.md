@@ -7,7 +7,9 @@ Simple and basic 3D Wire-Frame drawing program.
 - Uses PyGame to line drawing only.
 
 ## Running instructions
-
+## Using pip (recommened)
+- run `pip install GSOF_3dWireFrame`
+## Manual install
 - Clone
 - Install requirements `pip install -r requirements.txt`
 - run `pip install .`
@@ -17,3 +19,4 @@ Simple and basic 3D Wire-Frame drawing program.
 
 ![alt text](./Documentation/3DWireFrame_flex.gif "Screenshot")
 
+## This project is licensed under MIT LICENSE, see LICENSE file for more info.

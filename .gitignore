@@ -7,6 +7,7 @@ __pycache__/
 *.so
 
 .history/
+upload.bat
 
 # Distribution / packaging
 .Python

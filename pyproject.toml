@@ -1,3 +1,47 @@
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "GSOF_3dWireFrame"
+version = "1.0.0"
+description = "A 3D wireframe rendering library built on Pygame"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "GPL-3.0-or-later"}
+keywords = ["3dWireFrame"]
+authors = [
+    {name = "Guy Soffer", email = "gsoffer@yahoo.com"}
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
+    "Topic :: Games/Entertainment",
+    "Topic :: Multimedia :: Graphics :: 3D Rendering",
+]
+dependencies = [
+    "pygame",
+]
+
+[project.urls]
+Homepage = "https://github.com/mrGSOF/GSOF_3dWireFrame"
+
+[tool.setuptools]
+packages = [
+    "GSOF_3dWireFrame",
+    "GSOF_3dWireFrame.Lib3D",
+    "GSOF_3dWireFrame.MathLib",
+    "GSOF_3dWireFrame.modules"
+]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"GSOF_3dWireFrame" = ["objects/*.*"]
