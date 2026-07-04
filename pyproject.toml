@@ -29,6 +29,7 @@ classifiers = [
 ]
 dependencies = [
     "pygame-ce",
+    "pymeshlab"
 ]
 
 [project.urls]
