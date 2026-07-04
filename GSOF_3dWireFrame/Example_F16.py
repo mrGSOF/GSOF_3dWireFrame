@@ -6,10 +6,15 @@
  * Author: Guy Soffer
  * Copyright (C) 2026 Guy Soffer
 """
+
+try:
+    import pymeshlab
+except:
+    raise ValueError("could not find pymeshlab. Run ```pip install pymeshlab```")
+
 import pygame, math
 from Lib3D.Object_WireFrame import Object_wireFrame
 from Lib3D.Assembly import Assembly
-#from Lib3D.Object_base import Object_base
 from Lib3D import Objects
 from Lib3D import WireFrame_display as DISP
 from F16_Class import F16_View, Commands, State 
