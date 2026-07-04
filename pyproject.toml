@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "GSOF_3dWireFrame"
-version = "1.1.0"
+version = "1.1.1"
 description = "A 3D wireframe rendering library built on Pygame"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -28,7 +28,7 @@ classifiers = [
     "Topic :: Multimedia :: Graphics :: 3D Rendering",
 ]
 dependencies = [
-    "pygame",
+    "pygame-ce",
 ]
 
 [project.urls]
