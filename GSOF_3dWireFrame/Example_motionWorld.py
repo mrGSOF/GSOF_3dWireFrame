@@ -1,4 +1,4 @@
-import pygame
+import pygame, math
 from Lib3D.Object_WireFrame import Object_wireFrame as Object
 from Lib3D.Assembly import Assembly
 from Lib3D import Objects
@@ -21,16 +21,17 @@ def newScreen(title="New", resX=SCREEN_WIDTH, resY=SCREEN_HEIGHT, color=WHITE):
     return screen
   
 if __name__ == "__main__":
-    house = Object(filename="./objects/house.json", color=(0,180,180))
     world = Assembly(objects = (
-        house,
+        Object(filename="./objects/house.json", color=(0,180,180), name="HOUSE"),
+        Object(Objects.net(20,20), color=(0,100,0), name="GROUND").scale(0.005)\
+        .rotate(x=math.pi/2, y=0, z=0).translate(-5, -1, -5).setOrigin(),
         ))
 
     pygame.init()
     clock = pygame.time.Clock()
     screen = newScreen("3D Wire Frame Shapes", SCREEN_WIDTH, SCREEN_HEIGHT, WHITE)
-    wireframe = DISP.WireFrame(screen, pygame.draw.line, f=50, scale=10)
-    viewer = Controls.Viewer( pos=(0,0,-400),
+    wireframe = DISP.WireFrame(screen, pygame.draw.line, scale=1000)
+    viewer = Controls.Viewer( pos=(0,0,-10),
                               center=(int(screen.get_width()/2), int(screen.get_height()/2)),
                               moveLeftKey  = pygame.K_a,
                               moveRightKey = pygame.K_d,
@@ -54,8 +55,8 @@ if __name__ == "__main__":
 
         keys = pygame.key.get_pressed()
         (mPosX, mPosY) = pygame.mouse.get_pos()
-        wireframe.f += -(keys[pygame.K_1] - keys[pygame.K_2])*10
-        viewer.update(keys, mPosX, mPosY, speed=2)
+        wireframe.scale += -(keys[pygame.K_1] - keys[pygame.K_2])*10
+        viewer.update(keys, mPosX, mPosY, speed=0.1)
         
         clearScreen(screen, WHITE)
         world.reset()

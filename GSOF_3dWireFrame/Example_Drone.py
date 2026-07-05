@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
     clock = pygame.time.Clock()
     screen = newScreen("3D Wire Frame Shapes", SCREEN_WIDTH, SCREEN_HEIGHT, Colors.WHITE)
-    wireframe = DISP.WireFrame(screen, pygame.draw.line, f=50, scale=20.0)
+    wireframe = DISP.WireFrame(screen, pygame.draw.line, f=1, scale=1000.0)
 
     fps = 30
     maxRps = 2
@@ -131,7 +131,7 @@ if __name__ == "__main__":
         camAngY_r = z*PI
         camAngZ_r = x*PI
         
-        print(computePropellers(maxRps, camAngX_r, camAngY_r, camAngZ_r))
+        #print(computePropellers(maxRps, camAngX_r, camAngY_r, camAngZ_r))
         A, B, C, D = computePropellers(maxRps/2, camAngX_r, camAngY_r, camAngZ_r)
         A+=maxRps/2*sign(A)
         B+=maxRps/2*sign(B)

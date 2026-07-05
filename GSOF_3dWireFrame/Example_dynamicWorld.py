@@ -22,13 +22,13 @@ def newScreen(title="New", resX=SCREEN_WIDTH, resY=SCREEN_HEIGHT, color=WHITE):
     
 if __name__ == "__main__":
     import json
-    d = 4
+    d = 30
     solidHouse = Object(filename="./objects/house.json", color=(0,180,180), name="House").scale(10.0).setOrigin()
     window = Object(filename="./objects/frame.json", color=(200,0,0), name="Window").setCenter(scale=0.8)
     flexHouse = Assembly(objects = (
-        Object(filename="./objects/cube.json", color=(190,190,190), name="Body").translate(0,0,0 +d).setOrigin(),
-        Object(filename="./objects/pyramid.json", color=(90,90,90), name="Roof").translate(0,-2.5,0 +d).setOrigin(),
-        Assembly(objects=(window,), name="Window-Assy").translate(0,0,-1 +d).setOrigin(),
+        Object(filename="./objects/cube.json", color=(190,190,190), name="Body").translate(0,0,0).setOrigin(),
+        Object(filename="./objects/pyramid.json", color=(90,90,90), name="Roof").translate(0,-2.5,0).setOrigin(),
+        Assembly(objects=(window,), name="Window-Assy").translate(0,0,-1).setOrigin(),
         ),
         connections=[
           [[0,4],[1,0]], #< Point-4 of object-0 to point-0 of object-1
@@ -41,12 +41,12 @@ if __name__ == "__main__":
 
     world = Assembly(objects = (
         solidHouse.translate(0,0,0).setOrigin(),
-        flexHouse.translate(0,-0,0).setOrigin(),
+        flexHouse.translate(0,0,d).setOrigin(),
         ))
     pygame.init()
     clock = pygame.time.Clock()
     screen = newScreen("3D Wire Frame Shapes", SCREEN_WIDTH, SCREEN_HEIGHT, WHITE)
-    wireframe = DISP.WireFrame(screen, pygame.draw.line, f=50, scale=80)
+    wireframe = DISP.WireFrame(screen, pygame.draw.line, scale=50*80)
     fps = 30
     dt = 1/fps
     t = 0.0
