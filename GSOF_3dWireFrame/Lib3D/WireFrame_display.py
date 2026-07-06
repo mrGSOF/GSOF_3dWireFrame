@@ -9,13 +9,14 @@ def calcLine(a, b, x) -> float:
     return a*x +b
 
 class WireFrame():
-    def __init__(self, screen, line, f=1, scale=1000.0, maxViewDistance=10000):
+    def __init__(self, screen, line, f=1, scale=1000.0, minViewDistance=1, maxViewDistance=10000):
         self.screen = screen #< Object to draw on
         self.line = line     #< function to draw a line
         self.f = f           #< Perspective factor
         self.scale = scale   #< Lens zoom
-        self.maxViewZ = maxViewDistance #< 
-        self.minViewZ = abs(1.0)        #< 
+        print("ViewDistance between %1.2f to %1.2f"%(minViewDistance,maxViewDistance))
+        self.minViewZ = abs(minViewDistance) #< 
+        self.maxViewZ = abs(maxViewDistance) #< 
         self.centerX, self.centerY = (int(screen.get_width()/2), int(screen.get_height()/2))
         
     def draw(self, obj, color=None) -> None:
@@ -47,7 +48,7 @@ class WireFrame():
     def camera(self, point) -> list:
         """ Perspective projection <https://en.wikipedia.org/wiki/3D_projection> """
         x, y, z = point
-        s =self.scale/10
+        s = self.scale
         z *= -1
         if (self.f != 0):
             s = self.scale/z

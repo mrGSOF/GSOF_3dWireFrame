@@ -30,7 +30,7 @@ if __name__ == "__main__":
     pygame.init()
     clock = pygame.time.Clock()
     screen = newScreen("3D Wire Frame Shapes", SCREEN_WIDTH, SCREEN_HEIGHT, WHITE)
-    wireframe = DISP.WireFrame(screen, pygame.draw.line, scale=1000)
+    wireframe = DISP.WireFrame(screen, pygame.draw.line, scale=1000, minViewDistance=1)
     viewer = Controls.Viewer( pos=(0,0,-10),
                               center=(int(screen.get_width()/2), int(screen.get_height()/2)),
                               moveLeftKey  = pygame.K_a,
